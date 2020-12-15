@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Metadata -->
+<head>
+  <meta charset="utf-8">
+
+  <!-- Title -->
+  <title>Project Team 9: SBN Trade Show, DS 4200 S20</title>
+
+  <!-- CSS Styling -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="manifest" href="favicons/site.webmanifest">
+  <link rel="shortcut icon" href="favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<!-- Main page content -->
+<body>
+
+  <!-- Update this with your GitHub repo URL -->
+  <span id="forkongithub"><a href="https://github.com/NEU-DS-4200-S20/s-l-project-sbn-9-local-food">Fork me on GitHub</a></span>
+
+  <!-- Your writeup goes here -->
+  <div class = "content-column">
+
+    <h1>Project Team 9: Topic, DS 4200 S20</h1>
+
+    <p><strong>Sidney La Fontaine</strong>, <strong>Rahul Suryadevara</strong>, <strong>Alexander Shaw</strong>, <strong>Eric Downing</strong></p>
+
+    <p>Service-Learning Course Project as part of <a href="https://canvas.instructure.com/courses/1781714">DS 4200: Information Presentation and Visualization</a>, taught by <a href="https://www.eecs.tufts.edu/~dcashm01/">Prof. Dylan Cashman</a>, <a href="https://visualization.khoury.northeastern.edu/">Data Visualization @ Khoury</a>, <a href="https://www.khoury.northeastern.edu/">Northeastern University</a>.</p>
+
+
+    <h1>Motivation</h1>
+
+    <p><em>Our project is a visualization that aims to promote awareness among buyers and wholesale producers (vendors) about the availability of sustainable and local food. Through our visualization, we aim to foster these relationships by filling in the information gap that exists between buyers looking to purchase local food, and wholesale producers looking for more distribution channels. The needs of the organization include connecting buyers to vendors as larger institutions (buyers) are not well informed about the availability of local food. We are addressing this need by creating a visualization that identifies the location of various vendors that wholesale local food, along with how much they produce and are willing to increase in production (and whether or not they have a trade relationship) so that buyers can connect to them.</em></p>
+
+    <h1>Visualization</h1>
+
+  </div>
+
+
+  <div class='instruction'><p>To interact, hover over points on the line chart, select a line or bar, brush over points on the map, and to deselect all press the button labeled 'Deselect All'.</p></div>
+
+  <div class="deselectAll"> 
+    <button class="btn btn-info btn-sm" id='deselect' onclick="deselectAll()">Deselect All</button> 
+  </div>
+
+  <div class="vis-holder">
+  
+    <div class="linechart-holder" id="linechart"></div>
+    <div class="barchart-holder" id="barchart"></div>
+    <div class="legend-holder" id="legend">
+
+      <div class='my-legend'>
+      <div class='legend-title'>Legend</div>
+      <div class='legend-scale'>
+        <ul class='legend-labels'>
+          <li><span style='background:#0000ff;opacity: 0.5'></span>Vendor Has Trade Relation With Buyer</li>
+          <li><span style='background:#008000;opacity: 0.5'></span>Vendor Does Not Have Trade Relation With Buyer</li>
+          <li><span style='background:#ff0000; opacity: 0.5'></span>Selected data</li>
+        </ul>
+      </div>
+      </div>
+
+    </div>
+    <div class='map-table'>
+       <div class="map">
+      <div class="map-holder" id="map"></div>
+
+    </div>
+    <div class="table-holder" id="table">
+          <table>
+              <tr>
+                  <th>Zipcode</th>
+                  <th>Food Types Produced</th>
+                  <th>Trade Relation Status</th>
+              </tr>
+          </table>
+      </div>
+    </div>
+   
+      
+
+  </div>
+
+
+  <!-- Your writeup goes here -->
+  <div class = "content-column">
+
+    <h1>Demo Video</h1>
+
+    <p><em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag. For example, this screen recording Prof. Cody Dunne made of Mike Bostock's flexible transitions in D3 slide:</em></p>
+
+    <video controls width="100%">
+       <source src="files/Final Demo.mp4" type="video/mp4">
+
+    </video>
+
+    <h1>Visualization explanation</h1>
+
+    <p><em>Final visualization screenshots (PNG images), design justifications, UI walk-through, and linked presentation slides.</em></p>
+
+    <p><strong><u>Design Justification</u></strong></p>
+    <p>The essence of this visualization is to show buyers and vendors that there is an advantage in establishing a trade relationship. For vendors, this is indicated by the seasonal quantities produced, where higher production correlates to more business and outreach. For buyers, the bar chart implies that vendors without trade relationships have more opportunity, therefore desire, to increase their wholesaling. This indicates to buyers that there are vendors looking for more outlets. This is where the map comes in, a visualization that informs the buyer which vendors meet their food type needs (along with their trade relation status and zipcode location). </p>
+    
+    <p><u>Line Chart</u></p>
+    The two lines represent vendors with and without a trade relationship, with color coding to indicate this. For this visualization, we took the average production of vendors per season. This will immediately tell buyers which vendors (ones with trade relations or not) to seek based on their quantity needs per season. This also generally indicates to vendors that having trade relationships increases their production. We have enabled points on the line chart which the user can hover over to see the exact quantity. The user can select a line, which increases its opacity, and this selects all data points acorss the visualization that indicate vendors with the same trade relation status.
+
+    <p><u>Bar Chart</u></p>
+    The two bars represent vendors with and without trade relationship, with color coding to indicate this. For this visualization, we took the average desired percent increase in wholesaling for vendors (based on trade relationship). The numbers on top of the bars make it easier to interpret the chart, and the juxtaposition of the two bars clearly shows that there is opportunity in establishing trade relationships with vendors: increased wholesaling. The user can select a bar, which increases its opacity, and this selects all data points acorss the visualization that indicate vendors with the same trade relation status.
+
+    <p><u>Map</u></p>
+    The points indicate zipcodes, which include all the vendors present in that zipcode. If there are vendors in the same zipcode with a different trade relation, they are given a separate point (by modifying the latitude and longitude values very slightly). This prevents occlusion if many vendors are added (grouped by zipcode- at most two points per zipcode). This also enables the points to be color coded based on trade relationship status. The user can highlight one or many points by clicking and dragging over them. This provides details on demand, displaying a table beside the map (but only the rows for the points that have been selected) which shows each point's zip code and the food produced by the vendor located there.
+
+    <p><strong><u>UI Walk-through</u></strong></p>
+    The user may interact with any visualization to start with. For the line chart, the user may hover over the lines to get the exact quantities produced at specific points. The user can select a line (with trade relation, for example) to highlight (by increasing opacity) all the points on the map and corresponding bar with the same trade relation status. The bar chart has similar functionality, as this linking goes both ways. For the map, the user can brush a section of points to get more information about them in a chart next to the map (zipcode, food types produced, and trade relationship status). By brushing over those points the user will also highlight all the data with the corresponding trade relationships in the other 2 visualizations. For example, if you brush over data without a trade relationship in the map, the data in the other visualizations without a trade relationship with also be highlighted. If you brush over data with and without a trade relationship in the map, the data in the other visualizations with and without a trade relationship with also be highlighted. To deselect all data click the button labeled 'Deselect All.'
+    <p><strong>Default Visualization</strong></p>
+    <img src="images/defaultvis.png" alt="Default Visualization">
+
+     <p><strong>Hovering over a point on line chart</strong></p>
+    <img src="images/hoveringpoint.png" alt="Hovering over a point on line chart">
+
+     <p><strong>Selecting a bar with no trade relationship</strong></p>
+    <img src="images/selectbar.png" alt="Selecting a bar with no trade relationship">
+
+     <p><strong>Selecting a line with trade relationship</strong></p>
+    <img src="images/selectLine.png" alt="Selecting a line with trade relationship">
+
+     <p><strong>Selecting multiple zipcode</strong></p>
+    <img src="images/selectZipcode.png" alt="Selecting a zipcode">
+    <p>Note: Brush does not appear in screenshot.</p>
+
+
+    <h1>Data Analysis</h1>
+
+    <p>Data collection: in-person surveys collected by the Sustainable Business Network at the Local Trade Show</p>
+
+    <p><em>Data Summary</em></p>
+
+    <p>Below are the columns we are using between the three visualizations. The bolded data types are ones we added or derived (derived attributes list the attributes from the original dataset). The data was collected through in-person surveys collected by the Sustainable Business Network at the Local Trade Show. </p>
+
+    <p>Mailing Address (Zip)</p>
+    <ul>
+      <li>Data Type: string</li>
+      <li>Data Preprocessing: appended 0 to the beginning of each </li>
+      <li>Data Summary:Represents the zipcode for each vendor. Latitude and longitude were added as a means to map out the zipcodes.</li>
+    </ul>
+    <p><b>Latitude and Longitude [one column each coordinate]</b></p>
+    <ul>
+      <li>Data Type: float</li>
+      <li>Data Preprocessing: Data preprocessing: found the coordinates for each zip code; differentiated between vendors with the same zip code but different trade relation status by adding 0.008 to the longitude and latitude so the points do not overlap on the map</li>
+      <li>Data Summary: These are the coordinates of each zip code</li>
+    </ul>
+    <p>Does your company currently have a trade relationship with a buyer?</p>
+    <ul>
+      <li>Data Type: yes/no booleans</li>
+      <li>Data Preprocessing: all strings were set to lowercase, dropped any additional words or symbols that were not ‘yes’ or ‘no’</li>
+      <li>Data Summary: We use this to separate our dataset into the two categories: has trade relation or not.</li>
+    </ul>
+    <p>Please list the specialty crop(s) that you produce or are contained in your product(s).</p>
+    <ul>
+      <li>Data Type: string</li>
+      <li>Data Preprocessing: made lists lower case, replaced commas and spaces with forward slashes</li>
+      <li>Data Summary: Represents list of the crops produced by each vendor, which in turn are identified by their zip code.</li>
+    </ul>
+    <p>Spring, Summer, Fall, Winter Capable Volume [One column each season]</p>
+    <ul>
+      <li>Data Type: float</li>
+      <li>Data Preprocessing: Took the average of the bucket representing quantity (e.g. 4 for the 3-5 bucket). For the 20+ bucket, assumed 21. Computed the average production per season of all vendors. Standardized “N/A” answers to “Not Applicable”, and ignored them in the computation.</li>
+      <li>Data Summary: Represents how many pallets each vendor is capable of producing per season. The food items produced by a zip code consists of the food items produced by each vendor in that zipcode (with the same trade relation status).</li>
+    </ul>
+    <p>Approximately what percentage of your products do you currently sell wholesale?</p>
+    <ul>
+      <li>Data Type: float</li>
+      <li>Data Preprocessing: dropped “%” text, changed string into float</li>
+      <li>Data Summary: Represents the percentage of products that the vendor currently does wholesale</li>
+    </ul>
+    <p>Do you have a goal for what percentage of your products you would like to sell wholesale?</p>
+    <ul>
+      <li>Data Type: float</li>
+      <li>Data Preprocessing: dropped “%” text, changed string into float</li>
+      <li>Data Summary: Represents the percentage of products vendor desires to wholesale</li>
+    </ul>
+    <p><b>Percent Change in Desired Wholesaling</b></p>
+    <ul>
+      <li>Data Type: float</li>
+      <li>Data Preprocessing: Calculated by subtracting the two previous columns: (Do you have a goal for what percentage of your products you would like to wholesale? ) - (Approximately what percentage of your products do you currently wholesale?). Standardized “N/A” answers to “Not Applicable”, and ignored them in the computation.</li>
+      <li>Data Summary: Represents the difference between the goal for what percentage of products the vendor would like to wholesale, and approximately what percentage of products the vendor currently does wholesale.</li>
+    </ul>
+
+
+
+    <h1>Task Analysis</h1>
+
+    <p><em>Task Table</em></p>
+
+    <table style="width:100%">
+      <tr>
+        <th>Index (ID #)</th>
+        <th>Domain Task</th>
+        <th>Analytic Task</th>
+        <th>Search Task</th>
+        <th>Analyze Task</th>
+        <th>Description of Implementation</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td> Comparing quantity vendors are capable of producing based on trade relationship status</td>
+        <td>Compare</td>
+        <td>Locate</td>
+        <td>Derive</td>
+        <td>Depicted in the line chart through 2 different lines corresponding to the trade relation status.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Comparing ability to meet increased wholesaling demand based on trade relationship status</td>
+        <td>Compare</td>
+        <td>Locate</td>
+        <td>Derive</td>
+        <td>Depicted in the bar chart through 2 bars corresponding to the trade relation status.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Identify trade relationship status of vendors</td>
+        <td>Identify</td>
+        <td>Lookup</td>
+        <td>Present</td>
+        <td>Depicted through the color coding of the legend.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Identify location of the vendors</td>
+        <td>Summarize</td>
+        <td>Explore</td>
+        <td>Discover</td>
+        <td>Depicted through the map which allows users to explore the different locations of farms.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Identify what type of food vendors produce</td>
+        <td>Summarize</td>
+        <td>Explore</td>
+        <td>Discover</td>
+        <td>Depicted through the map which allows users to explore the different produce produced at locations of farms.</td>
+      </tr>
+    </table>
+
+    <h1>Design Process</h1>
+
+    <p><b>Sidney La Fontaine Visualizations</b></p>
+
+    <p><em>Visualization 1</em></p>
+
+    <img src='images/visualization1.png'>
+
+    <p>This visualization contains 3 different individual visualizations, the top one compares type of food a buyer is seeking (x-axis) and goal for how much product a buyer wants sources locally (y-axis), the middle one compares the changing in the desired wholesaling for a vendor (y-axis) and the type of product a vendor produces(x-axis), and the bottom one shows how many vendors have a trade relationship and how many do not. I used color to distinguish data from buyers, blue, to vendors, orange, and I would link the data based on the type of product. This visualization addresses: identity what type of food vendors produce, identify buyers’ food type needs, identify quantity buyers can buy (in percent), identify quantity vendors can produce/sell (in percent), and illustrates how many vendors do and do not have trade relationships.</p>
+
+    <p><em>Visualization 2</em></p>
+
+    <img src='images/visualization2.png'>
+
+    <p>This visualization contains 2 different individual visualizations, the top one compares type of business a buyer is (x-axis) and goal for how much product a buyer wants sources locally (y-axis), the bottom one compares the changing in the desired wholesaling for a vendor (y-axis) and the type of business a vendor wants to sell to(x-axis). I used color to distinguish data from buyers, blue, to vendors, green, and I would link the data based on the type of business. This visualization addresses: how much more vendors want to sell to different types of businesses, what percent of total food different types of businesses want to source local food for, and hopefully the connection between these two needs.</p>
+
+    <p><em>Visualization 3</em></p>
+
+    <img src='images/visualization3.png'>
+
+    <p>This visualization contains 3 different individual visualizations, the top left one compares whether a vendor has a trade relationship (x-axis) and percent change in the desired wholesaling (y-axis), the top right one compares the difference in the volume capable and actually produced by a vendor (y-axis) and the season of the year (x-axis), and contains separate lines for vendors that do and do not have a trade relationship, and the bottom one shows how many vendors have a trade relationship and how many do not. I used color to distinguish data from vendors that do and do not have a trade relationship, and I would link the data based on whether a vendor does and does not have a trade relationship. This visualization addresses: identify the difference in quantity, both in pallets and percent, vendors can produce and do produce, and how many vendors already have a trade relationship.</p>
+
+    <p><b>Rahul Suryadevara Visualizations</b></p>
+
+    <p><em>Visualization 4</em></p>
+
+    <img src='images/visualization4.jpg'>
+
+    <p>I chose a bar graph to compare the quantity of food the buyer wants to purchase locally with the quantity of that food the vendor wants to sell locally. The dropdown allows the user to compare information of different buyers and vendors, and the tabla allows the user to dynamically change what season is being represented on the bar graph (vendor quantities vary seasonably). Mark: bars, Channels: height, color. Tasks addressed: all tasks (buyer/vendor food availability/needs).</p>
+
+    <p><em>Visualization 5</em></p>
+
+    <img src='images/visualization5.jpg'>
+
+    <p>The rightside table shows zipcodes, which highlights the buyers in the leftside table that are located in that zipcode. The selection dynamically brings up pie charts (one for each buyer) depicting the quantity of each food type that the buyer needs. The area channel shows quantity, and the color channel identifies the food category. This visualization is intended to be used by vendors, and accomplishes the tasks of identifying buyer food type and quantity needs.</p>
+
+    <p><em>Visualization 6</em></p>
+
+    <img src='images/visualization6.jpg'>
+
+    <p>The rightside table allows the user to select the vendor(s) to show which buyer types those vendors cater to (collectively). The channel representing association is color (teal), and red represents a selected buyer. A barchart for the selected buyer displays the food category quantities it needs, compared to how much the vendor produces. The user can cycle through graphs of all vendors that can sell to the selected buyer (based on type). The bar mark represents quantity. This visualization addresses all tasks (buyer/vendor food availability/needs).</p>
+
+    <p><b>Eric Downing Visualizations</b></p>
+
+    <p><em>Visualization 7</em></p>
+
+    <img src='images/visualization7.jpg'>
+
+    <p>For this visualization, the top chart shows the number of buyers in each type of business, while the bottom chart shows the number of vendors who want to sell to each type of business. Color is used to distinguish buyers and vendors. Linking would be achieved by highlighting the bars in both graphs representing a buyer type when it is selected in one of the graphs. This visualization can help determine what types of buyers are not represented well by vendors</p>
+
+    <p><em>Visualization 8</em></p>
+
+    <img src='images/visualization8.jpg'>
+
+    <p>For this visualization, the top chart shows which buyers belong to what type, and which buyers are seeking which product, simultaneously. The bottom chart shows the same, but for vendors. Once again, color is used to distinguish buyers and vendors. This visualization can help match vendors and buyers together, as buyers and vendors with similar, or ideally the same, coordinates in the graphs would make a good pairing. When a point on one graph is selected, the corresponding point on the other is too, allowing one to see any potential overlap.</p>
+
+    <p><em>Visualization 9</em></p>
+
+    <img src='images/visualization9.jpg'>
+
+    <p>For this visualization, the top chart shows how much of each product vendors are able to produce in each season, while the bottom chart shows the percentage buyers want to locally source for each type of product. Again, color is used to distinguish buyers and sellers. Selecting one of the product types on one graph would be linked so that the corresponding product types on the other graph is highlighted. This visualization allows buyers to see how their product needs compare to supply, not just on an overall basis, but throughout the year.</p>
+
+    <p><b>Alex Shaw Visualizations</b></p>
+
+    <p><em>Visualization 10</em></p>
+
+    <img src='images/visualization10.jpg'>
+
+    <p>This visualization seeks to improve the SNB’s current method of displaying buyer information, which is essentially just a list of hyperlinks. I wanted to use a simple graphic, large interactive percentages. If we are able to receive the names tied to buyer survey responses, then the percentage of buyers seeking x, can be linked to the url of said buyers.</p>
+
+    <p><em>Visualization 11</em></p>
+
+    <img src='images/visualization11.jpg'>
+
+    <p>This visualization makes use of the zip codes collected in the vender survey. We can link the quantities of pallets of particular food categories back to the original zip code, emphasizing the locality of the SBN trade show. Only problem is that some of the vendor survey data on produce volume is aggregated, so we might not be able to categorize in this manner.</p>
+
+    <p><em>Visualization 12</em></p>
+
+    <img src='images/visualization12.jpg'>
+
+    <p>This visualization was inspired by a graphic used by farmer’s markets. If we do some dataset cleaning, then we can separate each individual item that the vendors plan on bringing to the trade show. I do not know how we would order these items, maybe alphabetized. Then, we map item’s zip code and calculate the average distance traveled for all salsas to Northeastern university from the center of said zip code. On the right side of the graphic, we can display a cartoon of the food item with a clickable window to show the detail of our chosen category, including potential information like the type of businesses that produce mushrooms or the urls to their website (if we can get this).</p>
+
+    <p><b>Visualization Choice</b></p>
+
+    <p>The visualization we decided to implement was visualization 3. After further critical examination of our visualizations, we decided that visualization 3 is just as informative as our top picks, while also being more straightforward to both implement and understand. Additionally, the data availability was too limited to implement our top designs, whereas visualization 3 uses data that has already been provided. Because of this, we decided to choose visualization 3 over visualizations 2, 4, and 5, which were our original top three picks.</p>
+
+    <p>We actually made a change to visualization 3's design, by including a map to show zip codes and increase interactivity. This decision proved to make our visualization appealing in useability testing.</p>
+    <p>We wanted our visualization to encourage potential buyers to attend the Trade Show, and are browsing the website to see if the trade show is a productive use of their time. Our visualization draws three conclusions by summarizing survey data: desire of vendors to find new trade partners and make larger wholesalers, volume that vendors can produce at the moment, and a map of containing vendor’s zip codes. Connecting these three ideas will encourage potential buyers visiting the website to join the trade show, where finding new partners will be very efficient.</p>
+
+
+    <p><b>Usability Test Results</b></p>
+    <p>We tested five tasks on multiple classmates in a visualization usability test. They found that the line chart points should disctint, so it can be recognized as an interaction. It is easy to tell the difference between vendors with or without a trade relationship and their capacity to produce food. This is due to the fact that brushing and linking between the map and the charts is very simple.</p>
+    <table style="width:100%">
+      <tr>
+        <th>Based on these notes, we decided to:</th>
+      </tr>
+      <tr>
+        <td> Make legend clearer</td>
+      </tr>
+      <tr>
+        <td>Add points to the line-chart to indicate interactivity</td>
+      </tr>
+      <tr>
+        <td>Give visualizations titles</td>
+      </tr>
+      <tr>
+        <td>Make sure titles, for visualizations, axes, etc., are clear and concise for a normal person</td>
+      </tr>
+      <tr>
+        <td>Instead of having all the graphs lined up next to each other order them to make it more intuitive for the user</td>
+      </tr>
+      <tr>
+        <td>Be able to provide information on more than 1 farm at a time for the map visualization</td>
+      </tr>
+    </table>
+
+
+    <h1>Conclusion</h1>
+
+    <p><em>This project allows SBN to refer to an online visualization to aid buyers in determining whether it is worth their while to attend the Local Foods Trade Show. Our visualization tells a story of vendor's desires to increase wholesale production as well as the capcity to do so. The products produced are available in the details on demand through the map, and the mission of SBN to support local food consumption is highlighted there as well. We accomplished these tasks by cleaning survey data, aggregating infomration in to usful bins like vendor capacity to produce crops during the winter, and cerating visualizations that encourages the user to explore the connection between vednors with or without a trade relationship. </em></p>
+
+    <p><em>Due to the annonymity of our dataset, the group was limited in our ability to link urls and more detailed vendor information. We recommend that SBN continue surveying its trade show participants with identifying informtation and for the next group of data scientists to incorporate more interactivity with this increase of information.</em></p>
+
+
+    <h1>Acknowledgments</h1>
+
+    <p><em>List here where any code, packages/libraries, text, images, designs, etc. that you leverage come from.</em></p>
+
+    <ul>
+      <li><a href="https://d3js.org/">D3: Data-Driven Documents</a> by Mike Bostock.</li>
+      <li><a href="https://codepo8.github.io/css-fork-on-github-ribbon/#">Pure CSS responsive "Fork me on GitHub" ribbon</a> by Chris Heilmann.</li>
+      <li><a href="http://datawanderings.com/2019/11/01/tutorial-making-an-interactive-line-chart-in-d3-js-v-5/">TUTORIAL: Making an Interactive Line Chart in D3.js v.5</a> by Eve the Analyst.</li>
+      <li><a href="http://datawanderings.com/2019/10/28/tutorial-making-a-line-chart-in-d3-js-v-5/">TUTORIAL: Making a Line Chart in D3.js v.5</a> by Eve the Analyst.</li>
+      <li><a href="http://bl.ocks.org/feyderm/6bdbc74236c27a843db633981ad22c1b">Scatter plot + Brush</a> by Michael Feyder.</li>
+      <li><a href="http://bl.ocks.org/AMDS/4a61497182b8fcb05906">D3.js Sortable & Responsive Table</a> by Mingsong Hu.</li>
+      <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox">A Complete Guide to Flexbox</a> by CSS tricks.</li>
+      <li><a href="http://www.d3noob.org/2013/01/adding-title-to-your-d3js-graph.html">Adding a title to your d3.js graph</a> by D3 Noob.</li>
+    </ul>
+
+  </div>
+
+  <!-- Scripts at the end avoid need for dealing with async, defer, or onload event handlers -->
+  <script src="lib/d3.v4/d3.v4.js"></script>
+  <script src="js/visualization.js"></script>
+  <script src="js/bar_chart.js"></script>
+  <script src="js/line_chart.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>
